@@ -6,6 +6,16 @@ const MongoClient = require('mongodb').MongoClient;
 const dbname = "capsulify";
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const verifyToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) return res.sendStatus(403);
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+};
 
 const generateAccessToken = (id, email) => {
     return jwt.sign({
@@ -305,6 +315,10 @@ async function main() {
         }
         const accessToken = generateAccessToken(user._id, user.email);
         res.json({ accessToken: accessToken });
+    });
+
+    app.get('/profile', verifyToken, (req, res) => {
+        res.json({ message: 'This is a protected route', user: req.user });
     });
 }
 
