@@ -248,6 +248,25 @@ async function main() {
             res.status(500).json({ error: "Internal server erorr" })
         }
     })
+
+    app.delete('/combinations/:id', async (req, res) => {
+        try {
+            const comboId = req.params.id;
+
+            // Attempt to delete the recipe
+            const result = await db.collection('combos').deleteOne({ _id: new ObjectId(comboId) });
+
+            if (result.deletedCount === 0) {
+                return res.status(404).json({ error: 'Combination not found' });
+            }
+
+            res.json({ message: 'Combination deleted successfully' });
+
+        } catch (error) {
+            console.error('Error deleting combination: ', error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    })
 }
 
 // Call main before starting the server
