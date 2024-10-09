@@ -83,7 +83,7 @@ async function main() {
             let criteria = {};
 
             if (tags) {
-                criteria["tag.name"] = {
+                criteria["tags"] = {
                     "$in": tags.split(",").map(tag => tag.trim())
                 };
             }
@@ -119,7 +119,8 @@ async function main() {
                     "bottom": 1,
                     "shoes": 1,
                     "bag": 1,
-                    "dress": 1
+                    "dress": 1,
+                    'tags': 1
                 }).toArray();
 
             console.log("Combinations found:", combinations);
@@ -143,7 +144,7 @@ async function main() {
             // mongo shell: db.recipes.find({
             // _id: ObjectId(id)
             // })
-            let combination = await db.collection('combinations').findOne({
+            let combination = await db.collection('combos').findOne({
                 "_id": new ObjectId(id)
             });
 

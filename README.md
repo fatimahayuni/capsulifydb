@@ -82,7 +82,7 @@ Combo to Tags: Combos are associated with one or more tags, and each tag can bel
 
 User to Combo: A user can mark multiple combos as favorites, forming a one-to-many relationship between users and combos.
 
-++ Example Data Structure:
+## Example Data Structure:
 * Combo Document (from combos collection):
 {
     "_id": "5f84d5b1b9b7e4206485ab49",
@@ -120,27 +120,46 @@ User to Combo: A user can mark multiple combos as favorites, forming a one-to-ma
 GET /combinations
 : Retrieve all combos with optional filtering by tags, wardrobe items, or combo name.
 
-Eg: Get a Specific Combo by comboName
-![Specific combo by comboName](images/Screenshot 2024-10-09 at 11.39.06 AM.png)
+Get All Combos:
+![Get all combos](images/Screenshot%202024-10-09%20at%2011.48.21%20AM.png)
 
-GET /combinations/
+Get a Specific Combo by comboName:
+![Specific combo by comboName](images/Screenshot_2024-10-09_at_11.39.06_AM.png)
+
+Test with Tags
+![Test With Tags](images/Screenshot%202024-10-09%20at%201.05.23%20PM.png)
+
+Test by wardrobe categories:
+![Test by wardrobe categories](file:///Users/fatimahayuni/Desktop/CapsulifyDB/images/Screenshot%202024-10-09%20at%201.18.30%20PM.png)
+
+
+GET /combinations/:id
 : Retrieve a specific combo by ID.
+![retrieveById](file:///Users/fatimahayuni/Desktop/CapsulifyDB/images/Screenshot%202024-10-09%20at%201.23.55%20PM.png)
 
 POST /combinations
 : Create a new combo.
+![Add a new combo](images/Screenshot%202024-10-09%20at%201.48.19%20PM.png)
 
 PUT /combinations/
 : Update an existing combo.
+![Update existing combo](images/Screenshot%202024-10-09%20at%201.51.26%20PM.png)
 
 DELETE /combinations/
 : Delete a combo.
+![Delete a combo](images/Screenshot%202024-10-09%20at%201.52.58%20PM.png)
 
 POST /users
 : Register a new user.
+![Register a new user](images/Screenshot%202024-10-09%20at%201.55.56%20PM.png)
 
 POST /login: Log in and receive an access token.
+![Login](images/Screenshot%202024-10-09%20at%202.07.50%20PM.png)
+
 
 GET /profile: Retrieve the authenticated user's profile (protected route).
+![Profile](images/Screenshot%202024-10-09%20at%203.49.36%20PM.png)
+
 
 ## Running the App
 1. Clone the repository.
